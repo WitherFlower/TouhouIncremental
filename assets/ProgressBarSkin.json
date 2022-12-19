@@ -1,0 +1,36 @@
+{
+com.badlogic.gdx.graphics.Color: {
+	RGBA_0_255_0_255: {
+		r: 0
+		g: 1
+		b: 0
+		a: 1
+	}
+	RGBA_255_0_0_255: {
+		r: 1
+		g: 0
+		b: 0
+		a: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+	Red: {
+		name: white-pixel
+		color: RGBA_255_0_0_255
+		minWidth: 16
+		minHeight: 16
+	}
+	Green: {
+		name: white-pixel
+		color: RGBA_0_255_0_255
+		minWidth: 16
+		minHeight: 16
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {
+	default-horizontal: {
+		background: Red
+		knobBefore: Green
+	}
+}
+}
