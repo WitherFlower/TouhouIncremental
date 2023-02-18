@@ -6,12 +6,13 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import ktx.assets.disposeSafely
 import ktx.scene2d.Scene2DSkin
+import ktx.style.button
 import ktx.style.label
 import ktx.style.progressBar
 import ktx.style.skin
 
 fun loadSkin() {
-    Scene2DSkin.defaultSkin = skin() { skin ->
+    Scene2DSkin.defaultSkin = skin { skin ->
         label {
             val fontFileName = "Olney"
             val fontTexture = Texture(Gdx.files.internal("$fontFileName.png"), true).apply {

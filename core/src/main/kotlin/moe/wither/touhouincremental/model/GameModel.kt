@@ -8,19 +8,13 @@ import moe.wither.touhouincremental.math.BigDouble
 
 class GameModel(stage: Stage) : PropertySourceChange(), EventListener {
 
-    var money: BigDouble = BigDouble(1)
-        private set(value) {
-            notify(::money, value)
-            field = value
-        }
-
-    var score: BigDouble = BigDouble(1)
+    var score: BigDouble = BigDouble(0)
         private set(value) {
             notify(::score, value)
             field = value
         }
 
-    var power: BigDouble = BigDouble(1)
+    var power: BigDouble = BigDouble(0)
         private set(value) {
             notify(::power, value)
             field = value
@@ -55,7 +49,6 @@ class GameModel(stage: Stage) : PropertySourceChange(), EventListener {
                 score = score.add(10)
                 if( enemyLife <= 0) {
                     enemyLife = BigDouble(10)
-                    money = money.add(10)
                     power = power.add(1)
                     score = score.add(pointValue)
                 }

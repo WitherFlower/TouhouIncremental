@@ -15,17 +15,26 @@ class GameView(
         setFillParent(true)
         debug = true
 
+        width = 1920f
+
         menuPanel(model, skin) {
             it.top()
+//            it.expand()
+            it.fill()
+            it.width(768f)
         }
 
         enemyPanel(model, skin) {
             it.expand()
             it.fill()
+            it.width(576f)
         }
 
         scorePanel(model, skin) {
             it.top()
+            it.left()
+//            it.expand()
+            it.width(576f)
         }
 
     }

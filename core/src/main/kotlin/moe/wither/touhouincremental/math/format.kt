@@ -1,5 +1,6 @@
 package moe.wither.touhouincremental.math
 
+import java.util.*
 import kotlin.math.pow
 
 enum class Notation {
@@ -13,9 +14,9 @@ fun formatValue(value: BigDouble, notation: Notation = Notation.Scientific): Str
         Notation.Scientific -> {
 
             return if (value < 1e15) {
-                "Score : ${"%,.0f".format(value.mantissa * 10.0.pow(value.exponent.toDouble()))}"
+                "%,.0f".format(Locale.ENGLISH,value.mantissa * 10.0.pow(value.exponent.toDouble()))
             } else {
-                "Score : ${String.format("%.3f", value.mantissa)}e${value.exponent}"
+                "${"%.3f".format(Locale.ENGLISH, value.mantissa)}e${value.exponent}"
             }
 
         }

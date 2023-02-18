@@ -13,25 +13,48 @@ class ScorePanel(
     skin: Skin
 ) : Table(skin), KTable {
 
-    private val scoreLabel : SmoothLabel
+    private val scoreLabel: SmoothLabel
+    private val powerLabel: SmoothLabel
+    private val pointValueLabel: SmoothLabel
 
     init {
 
         debug = true
         pad(20f)
 
-        scoreLabel = smoothLabel("Score : 1,234,567,890", skin).apply {
-            width = 500f
+        left()
+
+        scoreLabel = smoothLabel("Score : 1,234,567,890", skin) {
+            it.left()
+        }
+
+        row()
+
+        powerLabel = smoothLabel("Power : 128", skin) {
+            it.left()
+        }
+
+        row()
+
+        pointValueLabel = smoothLabel("Point Value : 10,000", skin) {
+            it.left()
         }
 
         // Data Binding
 
         model.onPropertyChange(model::score) {
-            scoreLabel.setText(formatValue(model.score))
+            scoreLabel.setText("Score : ${formatValue(model.score)}")
+        }
+
+        model.onPropertyChange(model::power) {
+            powerLabel.setText("Power : ${formatValue(model.power)}")
+        }
+
+        model.onPropertyChange(model::pointValue) {
+            pointValueLabel.setText("Point Value : ${formatValue(model.pointValue)}")
         }
 
     }
-
 
 
 }
