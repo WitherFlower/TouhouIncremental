@@ -10,22 +10,30 @@ import moe.wither.touhouincremental.event.fire
 import moe.wither.touhouincremental.model.GameModel
 import moe.wither.touhouincremental.smoothLabel
 
-class HeroInfoCard(
+class CharacterInfoCard(
     model: GameModel,
     skin: Skin
 ) : Table(skin), KTable {
 
+    companion object {
+        const val iconSize = 150f
+    }
+
     init {
 
         pad(10f)
+        debug = true
+
+        height = iconSize
 
         val iconTexture = Texture("assets/ReimuIcon.png").apply {
             setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear)
+            sizeBy(iconSize, iconSize)
         }
 
         image(iconTexture) {
             it.left()
-            it.size(150f,150f)
+            it.size(iconSize,iconSize)
             onClick { stage.fire(EnemyClickedEvent()) }
         }
 
@@ -35,18 +43,30 @@ class HeroInfoCard(
             this.right()
             this.top()
 
-            it.expand()
-            it.fill()
+            it.grow()
 
-            smoothLabel("Reimu Hakurei", skin) {
-                setFontScale(0.9f)
+            table{
+                smoothLabel("Keine Kamishirazawa", skin) {
+                    setFontScale(0.9f)
+                }
+
             }
 
-            row()
 
-            smoothLabel("Upgrade", skin) {
-                setFontScale(0.9f)
-                it.expandY()
+            row()
+            table{
+//                smoothLabel("Upgrade", skin) {
+//                    setFontScale(0.9f)
+//                }
+
+                button {
+                    smoothLabel("Upgrade", skin) {
+                        setFontScale(0.9f)
+                    }
+                }
+
+                it.growY()
+                it.right()
             }
         }
 
@@ -56,8 +76,8 @@ class HeroInfoCard(
 
 
 @Scene2dDsl
-fun <S> KWidget<S>.heroInfoCard(
+fun <S> KWidget<S>.characterInfoCard(
     model: GameModel,
     skin: Skin = Scene2DSkin.defaultSkin,
-    init: HeroInfoCard.(S) -> Unit = {}
-): HeroInfoCard = actor(HeroInfoCard(model, skin), init)
+    init: CharacterInfoCard.(S) -> Unit = {}
+): CharacterInfoCard = actor(CharacterInfoCard(model, skin), init)
